@@ -12,23 +12,21 @@
   <body>
     <section id="container">
 
-    <header class="clearfix">
-      <h1>Флэшкарточкер</h1>
-      <ul class="nav justify-content-end">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Все карточки</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Добавить карточку</a>
-        </li>
-      </ul>
-    </header>
+      <header class="clearfix">
+        <h1>Флэшкарточкер</h1>
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Все карточки</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Добавить карточку</a>
+          </li>
+        </ul>
+      </header>
 
-    <section>
-      <p style="font-size: 22px;">
-        Первый в мире удобный менеджер флеш-карточек. Именно так.
-      </p>
-    </section>
+      <section>
+        <%= yield %>
+      </section>
 
     </section>
   </body>
