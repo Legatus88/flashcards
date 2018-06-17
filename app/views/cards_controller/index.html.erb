@@ -1,0 +1,6 @@
+<ul>
+<% @cards.each do |card| %>
+ <li><%= card.original_text %> - <%= card.translated_text %><br>
+ 	<%= card.review_date %></li>
+<% end %>
+</ul>
