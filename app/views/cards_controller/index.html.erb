@@ -1,6 +1,21 @@
-<ul>
-<% @cards.each do |card| %>
- <li><%= card.original_text %> - <%= card.translated_text %><br>
- 	<%= card.review_date %></li>
-<% end %>
-</ul>
+<table>
+  <tr>
+    <th>Original</th>
+    <th>Translation</th>
+    <th>Review Date</th>
+    <th colspan="2"></th>
+  </tr>
+ 
+  <% @cards.each do |card| %>
+    <tr>
+      <td><%= card.original_text %></td>
+      <td><%= card.translated_text %></td>
+      <td><%= card.review_date %></td>
+      <td><%= link_to 'Show', cards_path(card) %></td>
+      <td><%= link_to 'Edit', edit_cards_path(card) %></td>
+      <td><%= link_to 'Destroy', cards_path(card),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
