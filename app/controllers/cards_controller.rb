@@ -1,4 +1,4 @@
-class CardsControllerController < ApplicationController
+class CardsController < ApplicationController
   def index
   	@cards = Card.all
   end
@@ -19,7 +19,7 @@ class CardsControllerController < ApplicationController
     @cards = Card.new(card_params)
  
     if @cards.save
-      redirect_to '/cards'
+      redirect_to @cards
     else
       render 'new'
     end
@@ -29,7 +29,7 @@ class CardsControllerController < ApplicationController
     @cards = Card.find(params[:id])
  
     if @cards.update(card_params)
-      redirect_to '/cards'
+      redirect_to @cards
     else
       render 'edit'
     end
