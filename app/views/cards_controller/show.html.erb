@@ -1,2 +1,4 @@
-<h1><%= @card.original_text %> - <%= @card.translated_text %></h1>
+<h1><%= @cards.original_text %> - <%= @cards.translated_text %></h1>
 
+<%= link_to 'Edit', edit_cards_path(@cards) %> |
+<%= link_to 'Back', cards_path %>
