@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   
   get '/cards/:id/edit' => 'cards_controller#edit'
   patch '/cards/:id' => 'cards_controller#update'
-  put '/cards/:id' => 'cards_controller#update'
 
   delete '/cards/:id' => 'cards_controller#destroy'
 end

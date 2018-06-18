@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_16_112535) do
+ActiveRecord::Schema.define(version: 2018_06_18_150850) do
 
   create_table "cards", force: :cascade do |t|
     t.string "original_text"
     t.string "translated_text"
-    t.string "review_date"
+    t.date "review_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
