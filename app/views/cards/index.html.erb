@@ -11,9 +11,9 @@
       <td><%= card.original_text %></td>
       <td><%= card.translated_text %></td>
       <td><%= card.review_date %></td>
-      <td><%= link_to 'Show', cards_path(card) %></td>
-      <td><%= link_to 'Edit', edit_cards_path(card) %></td>
-      <td><%= link_to 'Destroy', cards_path(card),
+      <td><%= link_to 'Show', card_path(card) %></td>
+      <td><%= link_to 'Edit', edit_card_path(card) %></td>
+      <td><%= link_to 'Destroy', card_path(card),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
     </tr>
