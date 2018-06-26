@@ -1,8 +1,8 @@
 <p>Первый в мире удобный менеджер флеш-карточек. Именно так.</p>
 
 <div>
-	<% if @random_card.nil?  %>
-	  <p>Нет нужных карт</p>
+	<% unless @random_card %>
+	  <p>No cards needed</p>
 	<% else %>
 	  <p>Translate this word: </p>
 	  <p><b><%= @random_card.translated_text %></b></p>
@@ -13,6 +13,9 @@
       	<%= hidden_field_tag(:id, @random_card.id) %>
       	<%= submit_tag("Check it!") %>
       <% end %>
-	    
+
+	  <% flash.each do |key, message| %>
+  		<p><%= message %></p>
+	  <% end %>  
 	<% end %>
 </div>
