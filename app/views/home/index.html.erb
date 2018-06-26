@@ -10,7 +10,6 @@
 	  <%= form_tag("/check", method: "post") do %>
 	    <%= label_tag(:user_text, "Translation: ") %>
       	<%= text_field_tag(:user_text) %>
-      	<%= hidden_field_tag(:translation, @random_card.original_text) %>
       	<%= hidden_field_tag(:id, @random_card.id) %>
       	<%= submit_tag("Check it!") %>
       <% end %>

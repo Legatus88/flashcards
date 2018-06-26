@@ -14,11 +14,14 @@ class Card < ApplicationRecord
     errors.add(:difference, 'words are the same') if ot == tt
   end
 
+  scope :expired, -> { where('review_date <= ?', DateTime.now) }
+
   before_create :plus_three_days
 
-  def translation_correct?(user_text, real_translation)
-    if user_text.downcase.eql? real_translation.downcase
+  def translation_correct?(user_text)
+    if user_text.downcase.eql? self.original_text
       plus_three_days
+      self.save
       true
     else
       false
