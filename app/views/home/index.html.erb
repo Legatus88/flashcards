@@ -1,1 +1,21 @@
 <p>Первый в мире удобный менеджер флеш-карточек. Именно так.</p>
+
+<div>
+	<% unless @random_card %>
+	  <p>No cards needed</p>
+	<% else %>
+	  <p>Translate this word: </p>
+	  <p><b><%= @random_card.translated_text %></b></p>
+
+	  <%= form_tag("/check", method: "post") do %>
+	    <%= label_tag(:user_text, "Translation: ") %>
+      	<%= text_field_tag(:user_text) %>
+      	<%= hidden_field_tag(:id, @random_card.id) %>
+      	<%= submit_tag("Check it!") %>
+      <% end %>
+
+	  <% flash.each do |key, message| %>
+  		<p><%= message %></p>
+	  <% end %>  
+	<% end %>
+</div>
