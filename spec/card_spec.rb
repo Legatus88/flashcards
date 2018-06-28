@@ -19,12 +19,5 @@ RSpec.describe Card, :type => :model do
       test_card.translation_correct?('Home')
       expect(test_card.review_date.to_s).to eq(expecting_date.to_s)
     end
-
   end
-
 end
-
-
-
-
-
