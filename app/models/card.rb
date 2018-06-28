@@ -19,7 +19,7 @@ class Card < ApplicationRecord
   before_create :plus_three_days
 
   def translation_correct?(user_text)
-    if user_text.downcase.eql? self.original_text
+    if user_text.downcase.eql?(self.original_text.downcase)
       plus_three_days
       self.save
       true
