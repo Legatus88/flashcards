@@ -5,20 +5,20 @@ RSpec.describe Card, :type => :model do
   let(:expecting_date) { Date.today + 3.day }
 
   describe '.translation_correct?' do 
-  	before { test_card }
+    before { test_card }
 
-  	it 'should be not right' do
+    it 'should be not right' do
       expect(test_card.translation_correct?('battlestart')).to be false
-  	end
+    end
 
-  	it 'should be correct' do 
+    it 'should be correct' do 
       expect(test_card.translation_correct?('Home')).to be true
-  	end
+    end
 
-  	it 'should change review_date by 3 days' do 
+    it 'should change review_date by 3 days' do 
       test_card.translation_correct?('Home')
       expect(test_card.review_date.to_s).to eq(expecting_date.to_s)
-  	end
+    end
 
   end
 
