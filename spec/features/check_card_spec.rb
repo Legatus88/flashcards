@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe 'checking translation' do 
-
   let!(:card) { create(:card) }
 
   context 'when translation is true' do
