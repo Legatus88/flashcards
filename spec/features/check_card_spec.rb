@@ -2,6 +2,9 @@ require 'rails_helper'
 
 describe 'checking translation' do 
   let!(:card) { create(:card) }
+  before(:each) do
+    card.update_attributes(review_date: Date.today - 4.day)
+  end
 
   context 'when translation is true' do
     before { check_it('House') }
