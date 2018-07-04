@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe 'checking translation' do 
-  let!(:user) { create(:user) }
   let!(:card) { create(:card) }
     
   before(:each) do
