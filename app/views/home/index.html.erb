@@ -13,9 +13,6 @@
       	<%= hidden_field_tag(:id, @random_card.id) %>
       	<%= submit_tag("Check it!") %>
       <% end %>
-
-	  <% flash.each do |key, message| %>
-  		<p><%= message %></p>
-	  <% end %>  
+  
 	<% end %>
 </div>

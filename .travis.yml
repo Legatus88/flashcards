@@ -1,0 +1,10 @@
+language: ruby
+
+services:
+  - sqlite3
+
+before_script:
+  - cp config/database.yml.travis config/database.yml  
+
+rvm:
+ - 2.5.1
