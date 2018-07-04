@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 describe 'checking translation' do 
+  let!(:user) { create(:user) }
   let!(:card) { create(:card) }
+    
   before(:each) do
     card.update_attributes(review_date: Date.today - 4.day)
   end

@@ -1,4 +1,7 @@
 class Card < ApplicationRecord
+
+  belongs_to :user
+  
   with_options presence:true do |a|
    	a.validates :original_text
     a.validates :translated_text
