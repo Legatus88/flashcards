@@ -4,7 +4,10 @@ class User < ApplicationRecord
     config.authentications_class = Authentication
   end
 
-  has_many :card, :authentications, :dependent => :destroy
+  has_many :card 
+  has many :authentications 
+  has many dependent: :destroy
+
   accepts_nested_attributes_for :authentications
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
@@ -12,4 +15,4 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
   validates :email, uniqueness: true
-  end
+end
