@@ -30,4 +30,4 @@
 /config/master.key
 
 # Ignore twitter api key
-/config/initializers/sorcery.rb
+/.env
