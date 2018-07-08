@@ -19,7 +19,7 @@
           <li class="nav-item">
             <%= link_to 'Все карточки', cards_path %> |
             <%= link_to 'Добавить карточку', new_card_path %> |
-            <%= link_to 'Login with Twitter', auth_at_provider_path(:provider => :twitter) %>
+            <%= link_to 'Login with Twitter', auth_at_provider_path(provider: :twitter) %>
           </li>
         </ul>
         <ul class="nav justify-content-end">
@@ -46,7 +46,7 @@
       <div class="starter-template">
         <%= yield %>
       </div>
-    </main>  
+    </main>
   </body>
 </html>
 

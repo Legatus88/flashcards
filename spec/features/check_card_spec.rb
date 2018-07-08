@@ -5,6 +5,7 @@ describe 'checking translation' do
     
   before(:each) do
     card.update_attributes(review_date: Date.today - 4.day)
+    sing_in('new_mail', 'pass')
   end
 
   context 'when translation is true' do
