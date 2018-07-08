@@ -5,8 +5,7 @@ class User < ApplicationRecord
   end
 
   has_many :card 
-  has many :authentications 
-  has many dependent: :destroy
+  has many :authentications, dependent: :destroy
 
   accepts_nested_attributes_for :authentications
 
