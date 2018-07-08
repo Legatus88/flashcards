@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
   def index
-  	@cards = Card.all
+  	@cards = Card.all.select { |c| c.user_id.eql? current_user.id }
   end
 
   def show
@@ -17,7 +17,8 @@ class CardsController < ApplicationController
 
   def create
     @cards = Card.new(card_params)
- 
+    @cards.user_id = current_user.id
+
     if @cards.save
       redirect_to cards_path
     else

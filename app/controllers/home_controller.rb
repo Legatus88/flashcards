@@ -10,7 +10,7 @@ class HomeController < ApplicationController
   	if @result
   	  flash[:notice] = "Correct!"
   	else
-  	  flash[:notice] = "Wrong!"
+  	  flash[:alert] = "Wrong!"
   	end
 
   	redirect_to root_path
