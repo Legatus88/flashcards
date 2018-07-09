@@ -40,23 +40,5 @@ describe 'checking translation' do
       expect(page).to have_content 'Login successful'
     end
   end
-
-  context 'when user created a card' do
-    before do 
-      login('MyString', 'MyString')
-      visit cards_path
-    end
-
-    it 'will show user\'s card' do
-      expect(page).to have_content 'House'
-    end
-  end
-
-  context 'when another user logged in' do
-    before { sing_in('3rd_user', '3rd_pass') }
-
-    it 'will show nothing' do
-      expect(page).to have_no_content 'House'
-    end
-  end
 end
+

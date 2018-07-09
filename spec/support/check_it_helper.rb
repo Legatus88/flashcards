@@ -22,3 +22,7 @@ end
 def logout
   visit 'user_sessions/destroy'
 end
+
+def twitter_login
+  visit 'oauth/twitter'
+end
