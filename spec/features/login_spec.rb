@@ -18,7 +18,7 @@ describe 'checking translation' do
   end
 
   context 'when user is logged in' do
-    before { login('new_mail', 'pass') }
+    before { login('MyString', 'MyString') }
 
     it 'give offer a card' do
       expect(page).to have_content 'Translate this word:'
