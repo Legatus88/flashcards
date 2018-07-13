@@ -1,4 +1,2 @@
-Metrics/LineLength:
-  Enabled: false
-Style/StringLiterals:
-  Enabled: false
+rubocop:
+  config_file: .rubocop.yml

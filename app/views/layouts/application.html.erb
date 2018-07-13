@@ -10,34 +10,45 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <span class="navbar-brand">
         <%= link_to 'Флешкарточкер', root_path %>
       </span>
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <%= link_to 'Все карточки', cards_path %>
+            <%= link_to 'Все карточки', cards_path %> |
+            <%= link_to 'Добавить карточку', new_card_path %> |
+            <%= link_to 'Login with Twitter', auth_at_provider_path(provider: :twitter) %>
           </li>
         </ul>
         <ul class="nav justify-content-end">
           <li>
-            <%= link_to 'Добавить карточку', new_card_path %>
+            <% if current_user %>
+            <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
+              <%= link_to "Logout", :logout, method: :post %>
+            <% else %>
+              <%= link_to "Register", new_user_path %> |
+              <%= link_to "Login", :login %>
+            <% end %>
           </li>
         </ul>
       </div>
     </nav>
     
-    <main role="main" class="container" style="margin-top: 100px;">
-      
+
+    <main role="main" class="container">
+      <div>
+        <p id="notice"><%= flash[:notice] %></p>
+        <p id="alert"><%= flash[:alert] %></p>
+      </div>    
+
       <div class="starter-template">
         <%= yield %>
       </div>
-      
-      <% flash.each do |key, message| %>
-        <p><%= message %></p>
-      <% end %>
-    </main>  
-
+    </main>
   </body>
 </html>
+
+
+

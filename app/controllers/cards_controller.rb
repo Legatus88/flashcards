@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
   def index
-  	@cards = Card.all
+  	@cards = current_user.cards
   end
 
   def show
@@ -16,8 +16,8 @@ class CardsController < ApplicationController
   end
 
   def create
-    @cards = Card.new(card_params)
- 
+    @cards = current_user.cards.create(card_params)
+
     if @cards.save
       redirect_to cards_path
     else
