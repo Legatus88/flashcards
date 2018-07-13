@@ -5,7 +5,7 @@ describe 'checking translation' do
     
   before(:each) do
     card.update_attributes(review_date: Date.today - 4.day)
-    sing_in('new_mail', 'pass')
+    login('MyString', 'MyString')
   end
 
   context 'when translation is true' do
@@ -25,11 +25,7 @@ describe 'checking translation' do
   end
 
   context 'when user created a card' do
-    before do
-      logout 
-      login('MyString', 'MyString')
-      visit cards_path
-    end
+    before { visit cards_path }
 
     it 'will show user\'s card' do
       expect(page).to have_content 'House'
