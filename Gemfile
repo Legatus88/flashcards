@@ -66,7 +66,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'simple_form'
 gem 'sorcery'
-gem "rubocop-rails"
+gem "rubocop-rails_config"
 gem 'omniauth-twitter'
 gem "paperclip", "~> 6.0.0"
 gem "aws-sdk-s3"
