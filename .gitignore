@@ -31,3 +31,5 @@
 
 # Ignore twitter api key
 /.env
+
+/Gemfile.lock
