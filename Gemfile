@@ -68,3 +68,5 @@ gem 'simple_form'
 gem 'sorcery'
 gem "rubocop-rails"
 gem 'omniauth-twitter'
+gem "paperclip", "~> 6.0.0"
+gem "aws-sdk-s3"

@@ -13,6 +13,8 @@
       	<%= hidden_field_tag(:id, @random_card.id) %>
       	<%= submit_tag("Check it!") %>
       <% end %>
+      <br />
+      <%= image_tag(@random_card.image.url(:thumb)) if @random_card.image.exists? %><br />
   
 	<% end %>
 </div>

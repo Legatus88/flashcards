@@ -1,5 +1,13 @@
 class Card < ApplicationRecord
 
+  has_attached_file :image, styles: { thumb: "300x300#" },
+                    storage: :s3,
+                    s3_credentials: {
+                        access_key_id: ENV["S3_KEY"],
+                        secret_access_key: ENV["S3_SECRET"],
+                        bucket: ENV["S3_BUCKET"]
+                    },
+                    s3_region: ENV["S3_REGION"]
   belongs_to :user
   
   with_options presence:true do |a|
@@ -9,6 +17,10 @@ class Card < ApplicationRecord
   end
   
   validate :words_are_different?
+
+  validates_attachment :image,
+                     content_type: { content_type: /\Aimage\/.*\z/ },
+                     size: { less_than: 1.megabyte }
 
   def words_are_different?
     return errors.add(:empty_fields, 'Fields are empty!') if original_text.empty? || translated_text.empty?
