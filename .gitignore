@@ -31,3 +31,6 @@
 
 # Ignore twitter api key
 /.env
+
+# Ignore uploaded pictures
+/public/system

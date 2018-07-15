@@ -1,4 +1,4 @@
 <h1><%= @cards.original_text %> - <%= @cards.translated_text %></h1>
-
+<%= link_to(image_tag(@cards.image.url(:thumb)), @cards.image.url, target: '_blank') if @cards.image.exists? %><br />
 <%= link_to 'Edit', edit_card_path(@cards) %> |
 <%= link_to 'Back', cards_path %>

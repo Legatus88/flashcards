@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-  	@random_card = Card.expired.sample
+  	@random_card = current_user.cards.expired.sample
   end
 
   def check
