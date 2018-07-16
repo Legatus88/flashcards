@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :cards
   resources :users
   resources :user_sessions
+  resources :decks
 
   post '/check' => 'home#check'
 
@@ -21,4 +22,6 @@ Rails.application.routes.draw do
   post "oauth/callback" => "oauths#callback"
   get "oauth/callback" => "oauths#callback" # for use with Github, Facebook
   get "oauth/:provider" => "oauths#oauth", as: :auth_at_provider
+
+  get '/switch_current_deck' => 'users#edit'
 end

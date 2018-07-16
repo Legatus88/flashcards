@@ -1,0 +1,25 @@
+<p><%= link_to 'Создать новую колоду', new_deck_path %> |
+<%= link_to 'Изменить текущую колоду', '/' %></p>
+
+<h4>Текущая колода:</h4>
+<p><%= @current_deck %></p>
+
+<h4>Все колоды:</h4>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Название</th>
+    <th colspan="2"></th>
+  </tr>
+ 
+  <% @decks.each do |deck| %>
+    <tr>
+      <td><%= deck.id %></td>
+      <td><%= deck.title %></td>
+      <td><%= link_to 'Редактировать', edit_deck_path(deck) %></td>
+      <td><%= link_to 'Удалить', deck_path(deck),
+              method: :delete,
+              data: { confirm: 'Вы уверены?' } %></td>
+    </tr>
+  <% end %>
+</table>

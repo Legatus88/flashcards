@@ -9,10 +9,12 @@ class CardsController < ApplicationController
 
   def new
     @cards = Card.new
+    @collection = current_user.decks
   end
 
   def edit
     @cards = Card.find(params[:id])
+    @collection = current_user.decks
   end
 
   def create
@@ -44,6 +46,6 @@ class CardsController < ApplicationController
 
   private
     def card_params
-      params.require(:card).permit(:original_text, :translated_text, :review_date, :image)
+      params.require(:card).permit(:original_text, :translated_text, :review_date, :image, :deck_id)
     end
 end

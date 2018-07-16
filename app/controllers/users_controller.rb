@@ -16,10 +16,12 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    @collection = current_user.decks
   end
 
   # GET /users/1/edit
   def edit
+    @collection = current_user.decks
   end
 
   # POST /users
@@ -63,6 +65,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def switch_current_deck
+    @user = Deck.all
+    #if current_user.update(set_deck)
+    #  redirect_to decks_path
+    #else
+    #  render 'switch_current_deck'
+    #end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -71,6 +82,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
+      params.require(:user).permit(:email, :password, :password_confirmation, :current_deck_id)
     end
 end
