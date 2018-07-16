@@ -23,5 +23,5 @@ Rails.application.routes.draw do
   get "oauth/callback" => "oauths#callback" # for use with Github, Facebook
   get "oauth/:provider" => "oauths#oauth", as: :auth_at_provider
 
-  get '/switch_current_deck' => 'users#edit'
+  get 'switch_current_deck' => 'users#switch_current_deck'
 end

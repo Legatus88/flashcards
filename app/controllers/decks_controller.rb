@@ -1,11 +1,7 @@
 class DecksController < ApplicationController
   def index
     @decks = current_user.decks
-
-    @current_deck = Deck.all.select { |deck| deck.id.eql? current_user.current_deck_id }.first.title
-    # пытался вытащить текущую деку с помощью скоупа, но
-    # не получилось получить итоговый title 
-    # @decks.current_deck(current_user.current_deck_id)
+    @current_deck = current_user.current_deck.title
   end
 
   def show

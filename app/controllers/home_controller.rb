@@ -1,11 +1,11 @@
 class HomeController < ApplicationController
   def index
-    @current_deck = current_user.current_deck_id
+    @current_deck = current_user.current_deck
 
-    if @current_deck.nil?
-      @random_card = current_user.cards.expired.sample
+    @random_card = if @current_deck.nil?
+      current_user.cards.expired.sample
     else
-    	@random_card = current_user.cards.deck(@current_deck).sample
+    	current_user.cards.deck(@current_deck).sample
     end
   end
 

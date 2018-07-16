@@ -66,9 +66,12 @@ class UsersController < ApplicationController
   end
 
   def switch_current_deck
-    @user = Deck.all
-    #if current_user.update(set_deck)
-    #  redirect_to decks_path
+    @user = current_user
+    @collection = current_user.decks
+
+    #if @user.update(set_current_deck)
+    #  @user.change_deck
+      #redirect_to decks_path
     #else
     #  render 'switch_current_deck'
     #end
@@ -83,5 +86,9 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation, :current_deck_id)
+    end
+
+    def set_current_deck
+      params.permit(:current_deck_id)
     end
 end
