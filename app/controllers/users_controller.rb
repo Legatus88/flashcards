@@ -67,11 +67,11 @@ class UsersController < ApplicationController
     @user = current_user
     @collection = current_user.decks
 
-    if @user.update(set_current_deck)
-      @user.current_deck
-    else 
-      render 'switch_current_deck'
-    end   
+    #if @user.update(set_current_deck)
+    #  @user.current_deck
+    #else 
+    #  render 'switch_current_deck'
+    #end
   end
 
   private
