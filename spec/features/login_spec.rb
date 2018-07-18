@@ -1,10 +1,8 @@
 require 'rails_helper'
 
 describe 'checking translation' do 
-  #let!(:card) { create(:card) }
     
   before(:each) do
-    #card.update_attributes(review_date: Date.today - 4.day)
     user_deck_card
     sing_in('new_mail', 'pass')
     logout

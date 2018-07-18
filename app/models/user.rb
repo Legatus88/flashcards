@@ -5,7 +5,6 @@ class User < ApplicationRecord
 
   has_many :cards, dependent: :destroy
   has_many :decks, dependent: :destroy
-  #has_one  :current_deck, class_name: 'Deck'
   has_many :authentications, dependent: :destroy
 
   accepts_nested_attributes_for :authentications
