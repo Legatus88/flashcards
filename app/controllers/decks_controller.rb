@@ -1,7 +1,11 @@
 class DecksController < ApplicationController
   def index
     @decks = current_user.decks
-    @current_deck = current_user.current_deck.title
+    @current_deck = if current_user.current_deck.nil?
+                      'Колода не выбрана'
+                    else
+                      current_user.current_deck.title
+                    end
   end
 
   def show

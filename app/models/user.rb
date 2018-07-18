@@ -3,9 +3,9 @@ class User < ApplicationRecord
     config.authentications_class = Authentication
   end
 
-  has_many :cards 
-  has_many :decks
-  has_one  :current_deck, class_name: 'Deck'
+  has_many :cards, dependent: :destroy
+  has_many :decks, dependent: :destroy
+  #has_one  :current_deck, class_name: 'Deck'
   has_many :authentications, dependent: :destroy
 
   accepts_nested_attributes_for :authentications
@@ -16,8 +16,8 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true
 
-  def change_deck 
-    self.current_deck = self.decks.select { |deck| deck.id.eql? self.current_deck_id }.first
-    save
-  end
+  def current_deck
+    return nil if current_deck_id.nil?
+    decks.find(current_deck_id)
+  end  
 end

@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :deck do
-    title "MyString"
+    title "first_deck"
   end
 end

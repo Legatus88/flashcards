@@ -3,6 +3,6 @@ FactoryBot.define do
     original_text 'House'
     translated_text 'Дом'
     review_date Date.today
-    user
+    deck_id '1'
   end
 end

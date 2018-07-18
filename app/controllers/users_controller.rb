@@ -16,12 +16,10 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
-    @collection = current_user.decks
   end
 
   # GET /users/1/edit
   def edit
-    @collection = current_user.decks
   end
 
   # POST /users
@@ -69,12 +67,11 @@ class UsersController < ApplicationController
     @user = current_user
     @collection = current_user.decks
 
-    #if @user.update(set_current_deck)
-    #  @user.change_deck
-      #redirect_to decks_path
-    #else
-    #  render 'switch_current_deck'
-    #end
+    if @user.update(set_current_deck)
+      @user.current_deck
+    else 
+      render 'switch_current_deck'
+    end   
   end
 
   private
