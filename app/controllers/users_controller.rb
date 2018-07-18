@@ -63,11 +63,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def switch_current_deck
-    @user = current_user
-    @collection = current_user.decks
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -77,9 +72,5 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation, :current_deck_id)
-    end
-
-    def set_current_deck
-      params.permit(:current_deck_id)
     end
 end
