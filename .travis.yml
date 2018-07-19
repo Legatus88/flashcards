@@ -1,7 +1,7 @@
 language: ruby
 
 services:
-  - sqlite3
+  - postgres
 
 before_script:
   - cp config/database.yml.travis config/database.yml  
