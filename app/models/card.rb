@@ -24,7 +24,7 @@ class Card < ApplicationRecord
   end
 
   scope :expired, -> { where('review_date <= ?', DateTime.now) }
-  scope :deck, ->(current_deck_id) { expired.where('deck_id == ?', current_deck_id) }
+  scope :deck, ->(current_deck_id) { expired.where(deck_id: current_deck_id) }
 
   before_create :plus_three_days
 
