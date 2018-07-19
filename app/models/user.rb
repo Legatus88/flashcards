@@ -3,7 +3,8 @@ class User < ApplicationRecord
     config.authentications_class = Authentication
   end
 
-  has_many :cards 
+  has_many :cards, dependent: :destroy
+  has_many :decks, dependent: :destroy
   has_many :authentications, dependent: :destroy
 
   accepts_nested_attributes_for :authentications
@@ -13,4 +14,9 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
   validates :email, uniqueness: true
+
+  def current_deck
+    return nil if current_deck_id.nil?
+    decks.find(current_deck_id)
+  end  
 end

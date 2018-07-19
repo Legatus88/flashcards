@@ -1,0 +1,13 @@
+<%= simple_form_for @decks do |f| %>
+    
+<% if @decks.errors.any? %>
+    <% @decks.errors.full_messages.each do |msg| %>
+      <div class="alert alert-danger"><%= msg %></div>
+      <% end %>
+  </div>
+<% end %>
+
+<%= f.input :title %>
+<%= f.button :submit %><br />
+
+<% end %>

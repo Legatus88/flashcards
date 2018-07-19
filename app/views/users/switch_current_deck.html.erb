@@ -1,0 +1,11 @@
+<h3>Сменить текущую колоду:</h3>
+
+<%= simple_form_for(current_user) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="field">
+    <%= f.input :current_deck_id, collection: current_user.decks %><br />
+    <%= f.button :submit %>
+  </div>
+<% end %>

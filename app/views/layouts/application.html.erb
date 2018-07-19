@@ -19,13 +19,14 @@
           <li class="nav-item">
             <%= link_to 'Все карточки', cards_path %> |
             <%= link_to 'Добавить карточку', new_card_path %> |
+            <%= link_to 'Колоды', decks_path %> |
             <%= link_to 'Login with Twitter', auth_at_provider_path(provider: :twitter) %>
           </li>
         </ul>
         <ul class="nav justify-content-end">
           <li>
             <% if current_user %>
-            <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
+            <%= link_to "Edit Profile", edit_user_path(current_user.id) %> |
               <%= link_to "Logout", :logout, method: :post %>
             <% else %>
               <%= link_to "Register", new_user_path %> |

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_13_174250) do
+ActiveRecord::Schema.define(version: 2018_07_16_170040) do
 
   create_table "authentications", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -31,7 +31,17 @@ ActiveRecord::Schema.define(version: 2018_07_13_174250) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
+    t.integer "deck_id"
+    t.index ["deck_id"], name: "index_cards_on_deck_id"
     t.index ["user_id"], name: "index_cards_on_user_id"
+  end
+
+  create_table "decks", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_decks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,6 +50,7 @@ ActiveRecord::Schema.define(version: 2018_07_13_174250) do
     t.datetime "updated_at", null: false
     t.string "crypted_password"
     t.string "salt"
+    t.integer "current_deck_id"
   end
 
 end

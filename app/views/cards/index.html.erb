@@ -3,6 +3,7 @@
     <th>Original</th>
     <th>Translation</th>
     <th>Review Date</th>
+    <th>Deck_id</th>
     <th colspan="2"></th>
   </tr>
  
@@ -11,11 +12,12 @@
       <td><%= card.original_text %></td>
       <td><%= card.translated_text %></td>
       <td><%= card.review_date %></td>
-      <td><%= link_to 'Show', card_path(card) %></td>
-      <td><%= link_to 'Edit', edit_card_path(card) %></td>
-      <td><%= link_to 'Destroy', card_path(card),
+      <td><%= card.deck_id %></td>
+      <td><%= link_to 'Открыть', card_path(card) %> |</td>
+      <td><%= link_to 'Редактировать', edit_card_path(card) %> |</td>
+      <td><%= link_to 'Удалить', card_path(card),
               method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
+              data: { confirm: 'Вы уверены?' } %></td>
     </tr>
   <% end %>
 </table>
