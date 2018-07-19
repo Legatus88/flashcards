@@ -29,12 +29,12 @@ ActiveRecord::Schema.define(version: 2018_07_16_170040) do
     t.date "review_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "image_file_name"
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
-    t.integer "deck_id"
+    t.bigint "deck_id"
     t.index ["deck_id"], name: "index_cards_on_deck_id"
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2018_07_16_170040) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_decks_on_user_id"
   end
 
@@ -56,4 +56,7 @@ ActiveRecord::Schema.define(version: 2018_07_16_170040) do
     t.integer "current_deck_id"
   end
 
+  add_foreign_key "cards", "decks"
+  add_foreign_key "cards", "users"
+  add_foreign_key "decks", "users"
 end
