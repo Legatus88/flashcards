@@ -60,7 +60,7 @@ class Card < ApplicationRecord
 
     def plus_time
       self.correct_checks = 5 if self.correct_checks > 5
-      period = TIMES.select { |key, value| key.to_i.eql? self.correct_checks }.values.first
+      period = TIMES.select { |key, _value| key.to_i.eql? self.correct_checks }.values.first
       self.review_date = Date.today + period
     end
 end
