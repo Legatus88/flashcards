@@ -5,9 +5,9 @@ class Card < ApplicationRecord
   belongs_to :deck
   
   with_options presence:true do |a|
-   	a.validates :original_text
+    a.validates :original_text
     a.validates :translated_text
-  	a.validates :review_date
+    a.validates :review_date
   end
   
   validate :words_are_different?
@@ -34,7 +34,6 @@ class Card < ApplicationRecord
   scope :expired, -> { where('review_date <= ?', DateTime.now) }
   scope :deck, ->(current_deck_id) { expired.where(deck_id: current_deck_id) }
 
-
   def translation_correct?(user_text)
     if user_text.casecmp(original_text).zero?
       self.wrong_checks = 0
@@ -43,7 +42,7 @@ class Card < ApplicationRecord
       self.save
       true
     else
-      self.wrong_checks =+1
+      self.wrong_checks =+ 1
       wrong_checks_test
       self.save
       false
@@ -52,10 +51,9 @@ class Card < ApplicationRecord
 
   private
     def wrong_checks_test
-      if wrong_checks > 3
-        self.correct_checks = 1
-        wrong_checks = 0
-      end
+      return unless self.wrong_checks > 3
+      self.correct_checks = 1
+      self.wrong_checks = 0
     end
 
     def plus_time
