@@ -38,7 +38,7 @@ class Card < ApplicationRecord
     if user_text.casecmp(original_text).zero?
       self.wrong_checks = 0
       self.correct_checks += 1
-      plus_time
+      plus_time(self.correct_checks)
       self.save
       true
     else
@@ -56,9 +56,9 @@ class Card < ApplicationRecord
       wrong_checks = 0
     end
 
-    def plus_time
-      self.correct_checks = 5 if self.correct_checks > 5
-      period = TIMES.select { |key, _value| key.to_i.eql? self.correct_checks }.values.first
+    def plus_time(checks)
+      checks = 5 if checks > 5
+      period = TIMES[checks.to_s]
       self.review_date = Date.today + period
     end
 end
