@@ -35,7 +35,8 @@ class Card < ApplicationRecord
   scope :deck, ->(current_deck_id) { expired.where(deck_id: current_deck_id) }
 
   def translation_correct?(user_text)
-    if user_text.casecmp(original_text).zero?
+    if DamerauLevenshtein.distance(user_text, original_text) <= 1
+    #if user_text.casecmp(original_text).zero?
       self.wrong_checks = 0
       self.correct_checks += 1
       plus_time(self.correct_checks)
@@ -48,6 +49,10 @@ class Card < ApplicationRecord
       false
     end
   end
+
+
+
+
 
   private
     def wrong_checks_test
