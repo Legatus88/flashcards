@@ -24,59 +24,40 @@ RSpec.describe Card, type: :model do
 
     it 'should change review_date by 0.5 days' do
       test_card.translation_correct?('Home')
+      
       expect(test_card.review_date.to_s).to eq(expecting_date_1.to_s)
     end
 
     it 'should change review_date by 3 days' do
-      test_card.translation_correct?('Home')
-      test_card.translation_correct?('Home')
+      2.times { test_card.translation_correct?('Home') } 
 
       expect(test_card.review_date.to_s).to eq(expecting_date_2.to_s)
     end
 
     it 'should change review_date by 7 days' do
-      test_card.translation_correct?('Home')
-      test_card.translation_correct?('Home')
-      test_card.translation_correct?('Home')
-
+      3.times { test_card.translation_correct?('Home') } 
       expect(test_card.review_date.to_s).to eq(expecting_date_3.to_s)
     end
 
     it 'should change review_date by 14 days' do
-      test_card.translation_correct?('Home')
-      test_card.translation_correct?('Home')
-      test_card.translation_correct?('Home')
-      test_card.translation_correct?('Home')
-
+      4.times { test_card.translation_correct?('Home') } 
+      
       expect(test_card.review_date.to_s).to eq(expecting_date_4.to_s)
     end
-
     it 'should change review_date by 1 month' do
-      test_card.translation_correct?('Home')
-      test_card.translation_correct?('Home')
-      test_card.translation_correct?('Home')
-      test_card.translation_correct?('Home')
-      test_card.translation_correct?('Home')
-
+      5.times { test_card.translation_correct?('Home') } 
+      
       expect(test_card.review_date.to_s).to eq(expecting_date_5.to_s)
     end
 
     it 'should change review_date by 1 month' do
-      test_card.translation_correct?('Home')
-      test_card.translation_correct?('Home')
-      test_card.translation_correct?('Home')
-      test_card.translation_correct?('Home')
-      test_card.translation_correct?('Home')
-      test_card.translation_correct?('Home')
+      6.times { test_card.translation_correct?('Home') } 
 
       expect(test_card.review_date.to_s).to eq(expecting_date_5.to_s)
     end    
 
     it 'should change review_date to 12 hours' do
-      test_card.translation_correct?('NotHome')
-      test_card.translation_correct?('NotHome')
-      test_card.translation_correct?('NotHome')
-      test_card.translation_correct?('NotHome')
+      4.times { test_card.translation_correct?('NotHome') } 
 
       expect(test_card.review_date.to_s).to eq(expecting_date_1.to_s)
     end    
