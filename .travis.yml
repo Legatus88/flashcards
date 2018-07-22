@@ -4,7 +4,7 @@ services:
   - postgres
 
 before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
+  - psql -c 'create database flashcards_test;' -U postgres
 
 rvm:
  - 2.5.1

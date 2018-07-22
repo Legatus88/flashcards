@@ -42,7 +42,7 @@ class Card < ApplicationRecord
       self.save
       true
     else
-      self.wrong_checks =+ 1
+      wrong_checks =+ 1
       wrong_checks_test
       self.save
       false
@@ -51,9 +51,9 @@ class Card < ApplicationRecord
 
   private
     def wrong_checks_test
-      return unless self.wrong_checks > 3
+      return unless wrong_checks > 3
       self.correct_checks = 1
-      self.wrong_checks = 0
+      wrong_checks = 0
     end
 
     def plus_time
