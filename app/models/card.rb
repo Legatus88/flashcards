@@ -36,7 +36,6 @@ class Card < ApplicationRecord
 
   def translation_correct?(user_text)
     if DamerauLevenshtein.distance(user_text, original_text) <= 1
-    #if user_text.casecmp(original_text).zero?
       self.wrong_checks = 0
       self.correct_checks += 1
       plus_time(self.correct_checks)
@@ -49,11 +48,7 @@ class Card < ApplicationRecord
       false
     end
   end
-
-
-
-
-
+  
   private
     def wrong_checks_test
       return unless wrong_checks > 3

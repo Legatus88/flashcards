@@ -18,5 +18,9 @@ class User < ApplicationRecord
   def current_deck
     return nil if current_deck_id.nil?
     decks.find(current_deck_id)
-  end  
+  end
+
+  def self.pending_cards_notification
+    InternMailer.pending_cards_notification.deliver
+  end
 end
