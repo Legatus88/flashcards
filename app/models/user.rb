@@ -20,10 +20,6 @@ class User < ApplicationRecord
     decks.find(current_deck_id)
   end
 
-  def any_cards_ready?
-    cards.any? { |card| card.review_date <= Date.today }
-  end
-
   def self.pending_cards_notification
     InternMailer.pending_cards_notification.deliver
   end
