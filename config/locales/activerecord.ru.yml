@@ -24,3 +24,4 @@ ru:
       messages:
         blank: 'не может быть пустым'
         too_short: 'слишком короткий'
+        record_invalid: 'Возникли ошибки: %{errors}'
