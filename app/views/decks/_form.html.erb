@@ -12,6 +12,6 @@
 <% end %>
 
 <%= f.input :title %>
-<%= f.button :submit %><br />
+<%= f.button :submit, t('.submit', action: @decks.new_record? ? "#{t('common.create')}" : "#{t('common.change')}") %><br />
 
 <% end %>

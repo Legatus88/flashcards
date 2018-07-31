@@ -34,7 +34,6 @@ class UsersController < ApplicationController
         auto_login(@user)
         format.html { redirect_to :users, notice: "#{t('common.user_created')}" }
         format.json { render :show, status: :created, location: @user }
-        I18n.locale = user_params[:locale]
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -49,7 +48,6 @@ class UsersController < ApplicationController
       if @user.update(user_params)
         format.html { redirect_to @user, notice: "#{t('common.user_updated')}" }
         format.json { render :show, status: :ok, location: @user }
-        I18n.locale = user_params[:locale]
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }

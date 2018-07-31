@@ -88,6 +88,8 @@ en:
       title: 'New deck'
     edit:
       title: 'Edit deck'
+    form:
+      submit: 'Create deck'
 
   home:
     index:

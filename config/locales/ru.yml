@@ -57,6 +57,8 @@ ru:
       title: 'Новая колода'
     edit:
       title: 'Редактировать колоду'
+    form:
+      submit: '%{action} колоду'
 
   home:
     index:

@@ -3,6 +3,6 @@ FactoryBot.define do
     email "MyString"
 	password "MyString"
 	password_confirmation "MyString"
-	locale "en"
+	locale "ru"
   end
 end

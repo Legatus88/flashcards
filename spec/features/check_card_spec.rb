@@ -11,7 +11,7 @@ describe 'checking translation' do
     before { check_it('House') }
 
     it "will tell Correct!" do
-      expect(page).to have_content 'Correct!'
+      expect(page).to have_content 'Правильно!'
     end
   end
 
@@ -19,7 +19,7 @@ describe 'checking translation' do
     before { check_it('awda') }
 
     it "will tell Wrong!" do
-      expect(page).to have_content 'Wrong!'
+      expect(page).to have_content 'Не правильно!'
     end
   end
 

@@ -12,7 +12,7 @@ describe 'checking translation' do
     before { visit root_path }
 
     it 'get login form' do
-      expect(page).to have_content 'Please login first'
+      expect(page).to have_content 'Сперва залогиньтесь'
     end
   end
 
@@ -20,7 +20,7 @@ describe 'checking translation' do
     before { login('MyString', 'MyString') }
 
     it 'give offer a card' do
-      expect(page).to have_content 'Translate this word:'
+      expect(page).to have_content 'Переведите это слово:'
     end
   end
 
@@ -28,7 +28,7 @@ describe 'checking translation' do
     before { login('old_mail', 'old_pass') }
     
     it 'will not login the user' do
-      expect(page).to have_content 'Login failed'
+      expect(page).to have_content 'Авторизация провалена'
     end
   end
 
@@ -36,7 +36,7 @@ describe 'checking translation' do
     before { login('new_mail', 'pass') }
     
     it 'will login the user' do
-      expect(page).to have_content 'Login successful'
+      expect(page).to have_content 'Авторизация успешна'
     end
   end
 end
