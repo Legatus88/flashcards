@@ -14,13 +14,13 @@ class HomeController < ApplicationController
   	@result = @card.translation_correct?(params[:user_text])
 
   	if @result
-  	  flash[:notice] = "Correct!"
-      flash[:correct_word] = "Correct translation is \"#{@card.translated_text}\""
-      flash[:users_word] = "Your answer is \"#{params[:user_text]}\""
+  	  flash[:notice] = t(:correct)
+      flash[:correct_word] = "#{t(:correct_word)}\"#{@card.translated_text}\""
+      flash[:users_word] = "#{t(:users_word)}\"#{params[:user_text]}\""
   	else
-      flash[:alert] = "Wrong!"
-      flash[:correct_word] = "Correct translation is \"#{@card.translated_text}\""
-  	  flash[:users_word] = "Your answer is \"#{params[:user_text]}\""
+      flash[:alert] = t(:alert)
+      flash[:correct_word] = "#{t(:users_word)}\"#{@card.translated_text}\""
+  	  flash[:users_word] = "#{t(:users_word)}\"#{params[:user_text]}\""
   	end
 
   	redirect_to root_path

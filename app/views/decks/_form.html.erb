@@ -1,13 +1,17 @@
 <%= simple_form_for @decks do |f| %>
     
 <% if @decks.errors.any? %>
-    <% @decks.errors.full_messages.each do |msg| %>
-      <div class="alert alert-danger"><%= msg %></div>
-      <% end %>
+  <div class="alert alert-danger">
+    <h5><%= t('common.errors') %></h5>
+	<ul>
+	  <% @decks.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>	
+	</ul>
   </div>
 <% end %>
 
 <%= f.input :title %>
-<%= f.button :submit %><br />
+<%= f.button :submit, t('.submit', action: @decks.new_record? ? "#{t('common.create')}" : "#{t('common.change')}") %><br />
 
 <% end %>

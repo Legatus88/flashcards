@@ -42,7 +42,7 @@ describe 'changing current deck' do
     end
 
     it 'will show \'No cards needed\'' do
-      expect(page).to have_content 'No cards needed'
+      expect(page).to have_content 'Нужные карточки отсутствуют'
     end
   end
 end

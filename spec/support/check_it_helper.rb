@@ -1,7 +1,7 @@
 def check_it(user_translation)
   visit root_path
   fill_in :user_text, with: user_translation
-  click_button 'Check it!'
+  click_button 'Проверить!'
 end
 
 def sing_in(mail, pass)
@@ -9,14 +9,15 @@ def sing_in(mail, pass)
   fill_in :user_email, with: mail
   fill_in :user_password, with: pass
   fill_in :user_password_confirmation, with: pass
-  click_button 'Create User'
+  select 'ru', from: :user_locale 
+  click_button 'Создать пользователя'
 end
 
 def login(mail, pass)
   visit login_path
   fill_in :email, with: mail
   fill_in :password, with: pass
-  click_button 'Login'
+  click_button 'Войти'
 end
 
 def logout
@@ -30,13 +31,13 @@ end
 def create_deck(title)
   visit new_deck_path
   fill_in :deck_title, with: title
-  click_button 'Create Deck'
+  click_button 'Создать колоду'
 end
 
 def choose_deck(id)
   visit switch_current_deck_path
   select id, from: :user_current_deck_id
-  click_button 'Update User'
+  click_button 'Сохранить'
 end
 
 def user_deck_card

@@ -2,7 +2,7 @@ class DecksController < ApplicationController
   def index
     @decks = current_user.decks
     @current_deck = if current_user.current_deck.nil?
-                      'Колода не выбрана'
+                      "#{t('common.no_deck')}"
                     else
                       current_user.current_deck.title
                     end

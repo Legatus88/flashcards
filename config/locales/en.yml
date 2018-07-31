@@ -30,4 +30,107 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  correct: 'Correct!'
+  correct_word: 'Correct translation is '
+  users_word: 'Your translation: '
+  alert: 'Wrong!'
+
+  common:
+    errors: 'Errors:'
+    back: 'Back'
+    open: 'Open'
+    edit: 'Edit'
+    delete: 'Delete'
+    confirmation: 'Are you sure?'
+    check_button: 'Check it!'
+    show: 'Show'
+    create: 'Create'
+    change: 'Change'
+
+    please_login: 'Please, login first'
+    user_created: 'User was successfully created.'
+    user_updated: 'User was successfully updated.'
+    user_destroyed: 'User was successfully destroyed.'
+    no_deck: 'No deck selected'
+    logged_from: 'Logged id from '
+    failed_loggin_from: 'Failed to login from '
+    login_suc: 'Login successful'
+    login_failed: 'Login failed'
+    logged_out: 'Logged out!'
+
+  cards:
+    index:
+      original: 'Original'
+      translation: 'Translation'
+      review_date: 'Review date'
+      deck_id: 'Deck id'
+    new:
+      title: 'New card' 
+    edit:
+      title: 'Edit'
+    form:
+      submit:
+        '%{action} card'
+
+
+  cards_mailers:
+    header: 'Some cards are waiting for review'
+    body: 'Click the link to open site'
+
+  decks:
+    index:
+      create_new_deck: 'New deck'
+      switch_current_deck: 'Switch current deck'
+      current_deck: 'Current deck'
+      all_decks: 'All decks'
+      deck_title: 'Title'  
+    new:
+      title: 'New deck'
+    edit:
+      title: 'Edit deck'
+    form:
+      submit: 'Create deck'
+
+  home:
+    index:
+      main_title: 'The worlds first handy flash card manager. Exactly.'
+      no_cards: 'No cards needed'
+      translate: 'Translate this word: '
+      translation: 'Translation:'
+
+  layouts:
+    application:
+      title: 'Flashcarder'
+      all_cards: 'All cards'
+      add_card: 'Add new card'
+      decks: 'Decks'
+      login_twitter: 'Login Twitter'
+      edit_profile: 'Edit Profile'
+      logout: 'Logout'
+      register: 'Register'
+      login: 'Login'
+
+  user_sessions:
+    new:
+      title: 'Welcome'
+    form:
+      submit: 'Login'
+      email: 'Email:'
+      password: 'Password:'
+
+  users:
+    index:
+      title: 'Users'
+      email: 'Email'
+    new:
+      title: 'Registration'
+    edit:
+      title: 'Edit user'
+    show:
+      email: 'Email: '
+    switch_current_deck:
+      title: 'Switch current deck'
+      submit: 'Save'
+    form:
+      submit:
+        '%{action} user'      

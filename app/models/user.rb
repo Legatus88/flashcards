@@ -15,6 +15,8 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true
 
+  validates :locale, presence:true
+
   def current_deck
     return nil if current_deck_id.nil?
     decks.find(current_deck_id)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_22_121934) do
+ActiveRecord::Schema.define(version: 2018_07_30_120551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2018_07_22_121934) do
     t.string "crypted_password"
     t.string "salt"
     t.integer "current_deck_id"
+    t.string "locale"
   end
 
   add_foreign_key "cards", "decks"

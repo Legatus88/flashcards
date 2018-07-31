@@ -1,9 +1,9 @@
 <table>
   <tr>
-    <th>Original</th>
-    <th>Translation</th>
-    <th>Review Date</th>
-    <th>Deck_id</th>
+    <th><%= t('.original') %></th>
+    <th><%= t('.translation') %></th>
+    <th><%= t('.review_date') %></th>
+    <th><%= t('.deck_id') %></th>
     <th colspan="2"></th>
   </tr>
  
@@ -13,11 +13,11 @@
       <td><%= card.translated_text %></td>
       <td><%= card.review_date %></td>
       <td><%= card.deck_id %></td>
-      <td><%= link_to 'Открыть', card_path(card) %> |</td>
-      <td><%= link_to 'Редактировать', edit_card_path(card) %> |</td>
-      <td><%= link_to 'Удалить', card_path(card),
+      <td><%= link_to t('common.open'), card_path(card) %> |</td>
+      <td><%= link_to t('common.edit'), edit_card_path(card) %> |</td>
+      <td><%= link_to t('common.delete'), card_path(card),
               method: :delete,
-              data: { confirm: 'Вы уверены?' } %></td>
+              data: { confirm: t('common.confirmation') } %></td>
     </tr>
   <% end %>
 </table>

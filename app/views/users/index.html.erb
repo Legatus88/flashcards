@@ -1,9 +1,9 @@
-<h1>Users</h1>
+<h1><%= t('.title') %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Email</th>
+      <th><%= t('.email') %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,9 +12,9 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.email %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('common.show'), user %></td>
+        <td><%= link_to t('common.edit'), edit_user_path(user) %></td>
+        <td><%= link_to t('common.delete'), user, method: :delete, data: { confirm: t('common.confirmation') } %></td>
       </tr>
     <% end %>
   </tbody>

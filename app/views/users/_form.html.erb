@@ -1,12 +1,21 @@
-
 <%= simple_form_for(@user) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+<% if @user.errors.any? %>
+  <div class="alert alert-danger">
+    <h5><%= t('common.errors') %></h5>
+  <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %> 
+  </ul>
+  </div>
+<% end %>
 
   <div class="field">
     <%= f.input :email %>
     <%= f.input :password %>
-    <%= f.input :password_confirmation %><br />
-    <%= f.button :submit %>
+    <%= f.input :password_confirmation %>
+    <%= f.input :locale, collection: @collection %><br />
+    <%= f.button :submit, t('.submit', action: @user.new_record? ? "#{t('common.create')}" : "#{t('common.change')}") %>
   </div>
 <% end %>

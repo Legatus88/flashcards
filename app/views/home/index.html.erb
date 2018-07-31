@@ -1,17 +1,17 @@
-<p>Первый в мире удобный менеджер флеш-карточек. Именно так.</p>
+<p><%= t('.main_title') %></p>
 
 <div>
 	<% unless @random_card %>
-	  <p>No cards needed</p>
+	  <p><%= t('.no_cards') %></p>
 	<% else %>
-	  <p>Translate this word: </p>
+	  <p><%= t('.translate') %></p>
 	  <p><b><%= @random_card.translated_text %></b></p>
 
 	  <%= form_tag("/check", method: "post") do %>
-	    <%= label_tag(:user_text, "Translation: ") %>
+	    <%= label_tag(:user_text, "#{t('.translation')}") %>
       	<%= text_field_tag(:user_text) %>
       	<%= hidden_field_tag(:id, @random_card.id) %>
-      	<%= submit_tag("Check it!") %>
+      	<%= submit_tag("#{t('common.check_button')}") %>
       <% end %>
       <br />
       <%= image_tag(@random_card.image.url(:thumb)) if @random_card.image.exists? %><br />

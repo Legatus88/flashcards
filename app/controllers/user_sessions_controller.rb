@@ -7,15 +7,15 @@ class UserSessionsController < ApplicationController
 
   def create
     if @user = login(params[:email], params[:password])
-      redirect_back_or_to(root_path, notice: 'Login successful')
+      redirect_back_or_to(root_path, notice: "#{t('common.login_suc')}")
     else
-      flash.now[:alert] = 'Login failed'
+      flash.now[:alert] = "#{t('common.login_failed')}"
       render action: 'new'
     end
   end
 
   def destroy
     logout
-    redirect_to(:users, notice: 'Logged out!')
+    redirect_to(:users, notice: "#{t('common.logged_out')}")
   end
 end
