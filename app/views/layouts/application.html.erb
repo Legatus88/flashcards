@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Flashcards</title>
+    <title>Flashcarder</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,27 +12,42 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <span class="navbar-brand">
-        <%= link_to 'Флешкарточкер', root_path %>
+        <%= link_to "#{t('.title')}", root_path %>
       </span>
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <%= link_to 'Все карточки', cards_path %> |
-            <%= link_to 'Добавить карточку', new_card_path %> |
-            <%= link_to 'Колоды', decks_path %> |
-            <%= link_to 'Login with Twitter', auth_at_provider_path(provider: :twitter) %>
+            <%= link_to t('.all_cards'), cards_path %> |
+            <%= link_to t('.add_card'), new_card_path %> |
+            <%= link_to t('.decks'), decks_path %> |
+            <%= link_to t('.login_twitter'), auth_at_provider_path(provider: :twitter) %>
           </li>
         </ul>
         <ul class="nav justify-content-end">
-          <li>
-            <% if current_user %>
-            <%= link_to "Edit Profile", edit_user_path(current_user.id) %> |
-              <%= link_to "Logout", :logout, method: :post %>
-            <% else %>
-              <%= link_to "Register", new_user_path %> |
-              <%= link_to "Login", :login %>
-            <% end %>
+          
+          <li class="nav-item <%= "active" if I18n.locale == :ru %>">
+            <%= link_to "Рус", { locale: :ru }, class: "nav-link" %>
           </li>
+          <li class="nav-item <%= "active" if I18n.locale == :en %>">
+            <%= link_to "En", { locale: :en }, class: "nav-link" %>
+          </li>
+          
+          <% if current_user %>
+            <li class="nav-item">
+              <%= link_to t('.edit_profile'), edit_user_path(current_user.id), class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to t('.logout'), :logout, method: :post, class: "nav-link" %>
+            </li>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to t('.register'), new_user_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to t('.login'), :login, class: "nav-link" %>
+                </li>
+          <% end %>
+        
         </ul>
       </div>
     </nav>

@@ -1,14 +1,14 @@
-<p><%= link_to 'Создать новую колоду', new_deck_path %> |
-<%= link_to 'Изменить текущую колоду', '/switch_current_deck' %></p>
+<p><%= link_to t('.create_new_deck'), new_deck_path %> |
+<%= link_to t('.switch_current_deck'), '/switch_current_deck' %></p>
 
-<h4>Текущая колода:</h4>
+<h4><%= t('.current_deck') %></h4>
 <p><%= @current_deck %></p>
 
-<h4>Все колоды:</h4>
+<h4><%= t('.all_decks') %>:</h4>
 <table>
   <tr>
     <th>ID</th>
-    <th>Название</th>
+    <th><%= t('.deck_title') %></th>
     <th colspan="2"></th>
   </tr>
  
@@ -16,10 +16,10 @@
     <tr>
       <td><%= deck.id %></td>
       <td><%= deck.title %></td>
-      <td><%= link_to 'Редактировать', edit_deck_path(deck) %></td>
-      <td><%= link_to 'Удалить', deck_path(deck),
+      <td><%= link_to t('common.edit'), edit_deck_path(deck) %></td>
+      <td><%= link_to t('common.delete'), deck_path(deck),
               method: :delete,
-              data: { confirm: 'Вы уверены?' } %></td>
+              data: { confirm: t('common.confirmation') } %></td>
     </tr>
   <% end %>
 </table>

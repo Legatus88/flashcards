@@ -1,9 +1,13 @@
 <%= simple_form_for @cards do |f| %>
     
 <% if @cards.errors.any? %>
-    <% @cards.errors.full_messages.each do |msg| %>
-      <div class="alert alert-danger"><%= msg %></div>
-      <% end %>
+  <div class="alert alert-danger">
+    <h5><%= t('common.errors') %></h5>
+	<ul>
+	  <% @cards.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>	
+	</ul>
   </div>
 <% end %>
 
@@ -12,6 +16,6 @@
 <%= f.input :review_date %>
 <%= f.input :image, as: :file %>
 <%= f.input :deck_id, collection: @collection %>
-<%= f.button :submit %><br />
+<%= f.button :submit, t('.submit', action: @cards.new_record? ? "#{t('common.create')}" : "#{t('common.change')}") %><br />
 
 <% end %>

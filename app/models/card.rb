@@ -8,6 +8,7 @@ class Card < ApplicationRecord
     a.validates :original_text
     a.validates :translated_text
     a.validates :review_date
+    a.validates :deck_id
   end
   
   validate :words_are_different?

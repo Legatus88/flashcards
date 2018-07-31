@@ -1,0 +1,226 @@
+ru:
+  correct: 'Правильно!'
+  correct_word: 'Правильный перевод: '
+  users_word: 'Ваш перевод: '
+  alert: 'Не правильно!'
+
+  common:
+    errors: 'При заполнении формы возникли ошибки:'
+    back: 'Назад'
+    open: 'Открыть'
+    edit: 'Редактировать'
+    delete: 'Удалить'
+    confirmation: 'Вы уверены?'
+    check_button: 'Проверить!'
+    show: 'Открыть'
+    create: 'Создать'
+    change: 'Изменить'
+
+    please_login: 'Сперва залогиньтесь'
+    user_created: 'Пользователь создан'
+    user_updated: 'Пользователь обновлён'
+    user_destroyed: 'Пользователь удалён'
+    no_deck: 'Колода не выбрана'
+    logged_from: 'Залогинен через '
+    failed_loggin_from: 'Не удалось залогиниться через '
+    login_suc: 'Авторизация успешна'
+    login_failed: 'Авторизация провалена'
+    logged_out: 'Разлогинено!'
+
+  cards:
+    index:
+      original: 'Слово'
+      translation: 'Перевод'
+      review_date: 'Дата проверки'
+      deck_id: 'id колоды'
+    new:
+      title: 'Добавить карточку:' 
+    edit:
+      title: 'Редактировать карточку'
+    form:
+      submit:
+        '%{action} карточку'
+
+
+  cards_mailers:
+    header: 'Несколько карточек ожидают проверки'
+    body: 'Нажмите на ссылку, чтобы перейти на сайт'
+
+  decks:
+    index:
+      create_new_deck: 'Новая колода'
+      switch_current_deck: 'Сменить колоду'
+      current_deck: 'Текущая колода'
+      all_decks: 'Колоды'
+      deck_title: 'Название колоды'  
+    new:
+      title: 'Новая колода'
+    edit:
+      title: 'Редактировать колоду'
+
+  home:
+    index:
+      main_title: 'Первый удобный флешкарточкер в мире. Именно так.'
+      no_cards: 'Нужные карточки отсутствуют'
+      translate: 'Переведите это слово: '
+      translation: 'Перевод:'
+
+  layouts:
+    application:
+      title: 'Флешкарточкер'
+      all_cards: 'Все карточки'
+      add_card: 'Добавить карточку'
+      decks: 'Колоды'
+      login_twitter: 'Авторизация Twitter'
+      edit_profile: 'Изменить профиль'
+      logout: 'Выйти'
+      register: 'Регистрация'
+      login: 'Войти'
+
+  user_sessions:
+    new:
+      title: 'Авторизуйтесь'
+    form:
+      submit: 'Войти'
+      email: 'Почта:'
+      password: 'Пароль:'
+
+  users:
+    index:
+      title: 'Пользователи'
+      email: 'Почта'
+    new:
+      title: 'Регистрация'
+    edit:
+      title: 'Редактировать пользователя'
+    show:
+      email: 'Почта: '
+    switch_current_deck:
+      title: 'Сменить текущую колоду'
+      submit: 'Сохранить'
+    form:
+      submit:
+        '%{action} пользователя'
+  date:
+    abbr_day_names:
+    - Вс
+    - Пн
+    - Вт
+    - Ср
+    - Чт
+    - Пт
+    - Сб
+    abbr_month_names:
+    -
+    - янв.
+    - февр.
+    - марта
+    - апр.
+    - мая
+    - июня
+    - июля
+    - авг.
+    - сент.
+    - окт.
+    - нояб.
+    - дек.
+    day_names:
+    - воскресенье
+    - понедельник
+    - вторник
+    - среда
+    - четверг
+    - пятница
+    - суббота
+    formats:
+      default: "%d.%m.%Y"
+      long: "%-d %B %Y"
+      short: "%-d %b"
+    month_names:
+    -
+    - января
+    - февраля
+    - марта
+    - апреля
+    - мая
+    - июня
+    - июля
+    - августа
+    - сентября
+    - октября
+    - ноября
+    - декабря
+    order:
+    - :day
+    - :month
+    - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        few: около %{count} часов
+        many: около %{count} часов
+        one: около %{count} часа
+        other: около %{count} часа
+      about_x_months:
+        few: около %{count} месяцев
+        many: около %{count} месяцев
+        one: около %{count} месяца
+        other: около %{count} месяца
+      about_x_years:
+        few: около %{count} лет
+        many: около %{count} лет
+        one: около %{count} года
+        other: около %{count} лет
+      almost_x_years:
+        one: почти 1 год
+        few: почти %{count} года
+        many: почти %{count} лет
+        other: почти %{count} лет
+      half_a_minute: меньше минуты
+      less_than_x_minutes:
+        few: меньше %{count} минут
+        many: меньше %{count} минут
+        one: меньше %{count} минуты
+        other: меньше %{count} минуты
+      less_than_x_seconds:
+        few: меньше %{count} секунд
+        many: меньше %{count} секунд
+        one: меньше %{count} секунды
+        other: меньше %{count} секунды
+      over_x_years:
+        few: больше %{count} лет
+        many: больше %{count} лет
+        one: больше %{count} года
+        other: больше %{count} лет
+      x_days:
+        few: "%{count} дня"
+        many: "%{count} дней"
+        one: "%{count} день"
+        other: "%{count} дня"
+      x_minutes:
+        few: "%{count} минуты"
+        many: "%{count} минут"
+        one: "%{count} минуту"
+        other: "%{count} минуты"
+      x_months:
+        few: "%{count} месяца"
+        many: "%{count} месяцев"
+        one: "%{count} месяц"
+        other: "%{count} месяца"
+      x_years:
+        few: "%{count} года"
+        many: "%{count} лет"
+        one: "%{count} год"
+        other: "%{count} года"
+      x_seconds:
+        few: "%{count} секунды"
+        many: "%{count} секунд"
+        one: "%{count} секунду"
+        other: "%{count} секунды"
+    prompts:
+      day: День
+      hour: Часов
+      minute: Минут
+      month: Месяц
+      second: Секунд
+year: Год      
