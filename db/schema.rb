@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_30_120551) do
+ActiveRecord::Schema.define(version: 2018_08_03_130103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,8 +35,10 @@ ActiveRecord::Schema.define(version: 2018_07_30_120551) do
     t.integer "image_file_size"
     t.datetime "image_updated_at"
     t.bigint "deck_id"
-    t.integer "correct_checks", default: 0
-    t.integer "wrong_checks", default: 0
+    t.integer "step_number", default: 0, null: false
+    t.integer "quality"
+    t.float "e_factor", default: 2.5, null: false
+    t.integer "last_term"
     t.index ["deck_id"], name: "index_cards_on_deck_id"
     t.index ["user_id"], name: "index_cards_on_user_id"
   end

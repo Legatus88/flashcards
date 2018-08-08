@@ -1,3 +1,21 @@
+<script>
+var i = 0;	
+function tik() {
+	$.ajax({
+		cache: false,
+		success: function() {
+			$('#answer_time').val(i++);
+		}
+	});
+}
+
+$(document).ready(function(){  
+    tik();  
+	setInterval('tik()',1000);  
+});
+
+</script>
+
 <p><%= t('.main_title') %></p>
 
 <div>
@@ -11,6 +29,7 @@
 	    <%= label_tag(:user_text, "#{t('.translation')}") %>
       	<%= text_field_tag(:user_text) %>
       	<%= hidden_field_tag(:id, @random_card.id) %>
+      	<%= hidden_field_tag(:answer_time, 5) %>
       	<%= submit_tag("#{t('common.check_button')}") %>
       <% end %>
       <br />

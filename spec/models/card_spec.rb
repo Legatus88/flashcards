@@ -1,59 +1,99 @@
 require 'rails_helper'
 
-RSpec.describe Card, type: :model do
+RSpec.describe SuperMemo, type: :model do
   let(:test_card) { Card.new(original_text: 'Home', translated_text: 'Дом', review_date: Date.today) }
-  let(:expecting_date_1) { Date.today + 0.5.day }
-  let(:expecting_date_2) { Date.today + 3.day }
-  let(:expecting_date_3) { Date.today + 7.day }
-  let(:expecting_date_4) { Date.today + 14.day }
-  let(:expecting_date_5) { Date.today + 1.months }
+  let(:expecting_date_1) { Date.today + 1.day }
+  let(:expecting_date_2) { Date.today + 6.day }
 
   describe '.translation_correct?' do
-    before { test_card }
-
     it 'should be not right' do
-      expect(test_card.translation_correct?('battlestart')).to be false
+      expect(SuperMemo.new(test_card).translation_correct?('battlestart', '3')).to be false
     end
 
     it 'should be correct' do
-      expect(test_card.translation_correct?('Home')).to be true
+      expect(SuperMemo.new(test_card).translation_correct?('Home', '3')).to be true
     end
   end
 
   describe 'changing review_date' do
-    it 'should change review_date by 0.5 days' do
-      test_card.translation_correct?('Home')
+    it 'should change review_date by 1 day' do
+      SuperMemo.new(test_card).translation_correct?('Home', '3')
       expect(test_card.review_date.to_s).to eq(expecting_date_1.to_s)
     end
 
-    it 'should change review_date by 3 days' do
-      2.times { test_card.translation_correct?('Home') }
+    it 'should change review_date by 6 days' do
+      2.times { SuperMemo.new(test_card).translation_correct?('Home', '3') }
       expect(test_card.review_date.to_s).to eq(expecting_date_2.to_s)
     end
-
-    it 'should change review_date by 7 days' do
-      3.times { test_card.translation_correct?('Home') }
-      expect(test_card.review_date.to_s).to eq(expecting_date_3.to_s)
+  end
+  
+  describe 'changing quality' do
+    it 'should change quality to 5' do
+      SuperMemo.new(test_card).translation_correct?('Home', '3')
+      expect(test_card.quality).to eq(5)
     end
 
-    it 'should change review_date by 14 days' do
-      4.times { test_card.translation_correct?('Home') }
-      expect(test_card.review_date.to_s).to eq(expecting_date_4.to_s)
+    it 'should change quality to 4' do
+      SuperMemo.new(test_card).translation_correct?('Home', '5')
+      expect(test_card.quality).to eq(4)
     end
 
-    it 'should change review_date by 1 month' do
-      5.times { test_card.translation_correct?('Home') }
-      expect(test_card.review_date.to_s).to eq(expecting_date_5.to_s)
+    it 'should change quality to 3' do
+      SuperMemo.new(test_card).translation_correct?('Home', '8')
+      expect(test_card.quality).to eq(3)
     end
 
-    it 'should change review_date by 1 month' do
-      6.times { test_card.translation_correct?('Home') }
-      expect(test_card.review_date.to_s).to eq(expecting_date_5.to_s)
+    it 'should change quality to 2' do
+      SuperMemo.new(test_card).translation_correct?('Home', '20')
+      expect(test_card.quality).to eq(2)
     end
 
-    it 'should change review_date to 12 hours' do
-      4.times { test_card.translation_correct?('NotHome') }
-      expect(test_card.review_date.to_s).to eq(expecting_date_1.to_s)
+    it 'should change quality to 1' do
+      SuperMemo.new(test_card).translation_correct?('Home', '30')
+      expect(test_card.quality).to eq(1)
+    end
+
+    it 'should change quality to 0' do
+      SuperMemo.new(test_card).translation_correct?('Home', '100')
+      expect(test_card.quality).to eq(0)
+    end
+  end
+
+  describe 'changing e_factor' do
+    it 'should be 2.5 by default' do
+      expect(test_card.e_factor).to eq(2.5)
+    end
+
+    it 'should be 2.6' do
+      SuperMemo.new(test_card).translation_correct?('Home', '3')
+      expect(test_card.e_factor).to eq(2.6)
+    end
+
+    it 'should be 2.5' do
+      SuperMemo.new(test_card).translation_correct?('Home', '5')
+      expect(test_card.e_factor).to eq(2.5)
+    end
+
+    it 'should be 2.36' do
+      SuperMemo.new(test_card).translation_correct?('Home', '10')
+      expect(test_card.e_factor).to eq(2.36)
+    end
+
+    it 'should be 2.5' do
+      SuperMemo.new(test_card).translation_correct?('Home', '20')
+      expect(test_card.e_factor).to eq(2.5)
+    end
+  end
+
+  describe 'changing step_number and last_term' do 
+    before { 2.times { SuperMemo.new(test_card).translation_correct?('Home', '5') } } 
+    
+    it 'should be 1' do 
+      expect(test_card.step_number).to eq(2)
+    end
+
+    it 'should be 1' do 
+      expect(test_card.last_term).to eq(6)
     end
   end
 end

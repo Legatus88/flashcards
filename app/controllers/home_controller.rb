@@ -10,8 +10,8 @@ class HomeController < ApplicationController
   end
 
   def check
-  	@card = Card.find(params[:id])
-  	@result = @card.translation_correct?(params[:user_text])
+    @card = Card.find(params[:id])
+  	@result = SuperMemo.new(@card).translation_correct?(params[:user_text], params[:answer_time])
 
   	if @result
   	  flash[:notice] = t(:correct)
@@ -19,7 +19,7 @@ class HomeController < ApplicationController
       flash[:users_word] = "#{t(:users_word)}\"#{params[:user_text]}\""
   	else
       flash[:alert] = t(:alert)
-      flash[:correct_word] = "#{t(:users_word)}\"#{@card.translated_text}\""
+      flash[:correct_word] = "#{t(:correct_word)}\"#{@card.translated_text}\""
   	  flash[:users_word] = "#{t(:users_word)}\"#{params[:user_text]}\""
   	end
 
