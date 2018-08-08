@@ -5,14 +5,18 @@ class SuperMemo
 
   def translation_correct?(user_text, answer_time)
     if DamerauLevenshtein.distance(user_text, @card.original_text) <= 1
-      @card.quality = choose_quality(answer_time.to_i).first
-      ef_mod(@card.quality)
-      next_step
-      @card.save
+      modify_card(answer_time)
       true
     else
       false
     end
+  end
+
+  def modify_card(answer_time)
+      @card.quality = choose_quality(answer_time.to_i).first
+      ef_mod(@card.quality)
+      next_step
+      @card.save
   end
 
   def choose_quality(a_t)

@@ -1,21 +1,4 @@
-<script>
-var i = 0;	
-function tik() {
-	$.ajax({
-		cache: false,
-		success: function() {
-			$('#answer_time').val(i++);
-		}
-	});
-}
-
-$(document).ready(function(){  
-    tik();  
-	setInterval('tik()',1000);  
-});
-
-</script>
-
+<%= javascript_include_tag "answer_timer" %>
 <p><%= t('.main_title') %></p>
 
 <div>
