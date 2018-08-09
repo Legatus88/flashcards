@@ -73,3 +73,5 @@ gem "aws-sdk-s3"
 gem "damerau-levenshtein"
 gem 'jquery-rails'
 gem 'whenever', require: false
+gem 'rollbar'
+gem 'newrelic_rpm'

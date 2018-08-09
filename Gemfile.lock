@@ -147,6 +147,7 @@ GEM
     multi_json (1.13.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
+    newrelic_rpm (5.3.0.346)
     nio4r (2.3.1)
     nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
@@ -211,6 +212,8 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    rollbar (2.16.4)
+      multi_json
     rspec-core (3.7.1)
       rspec-support (~> 3.7.0)
     rspec-expectations (3.7.0)
@@ -318,11 +321,13 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
+  newrelic_rpm
   omniauth-twitter
   paperclip (~> 6.0.0)
   pg
   puma (~> 3.11)
   rails (~> 5.2.0)
+  rollbar
   rspec-rails (~> 3.7)
   rubocop-rails_config
   sass-rails (~> 5.0)
