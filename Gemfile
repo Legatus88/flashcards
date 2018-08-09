@@ -71,4 +71,5 @@ gem 'omniauth-twitter'
 gem "paperclip", "~> 6.0.0"
 gem "aws-sdk-s3"
 gem "damerau-levenshtein"
+gem 'jquery-rails'
 gem 'whenever', require: false

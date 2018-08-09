@@ -1,3 +1,5 @@
+<% javascript_include_tag "answer_timer" %>
+
 <p><%= t('.main_title') %></p>
 
 <div>
@@ -11,6 +13,7 @@
 	    <%= label_tag(:user_text, "#{t('.translation')}") %>
       	<%= text_field_tag(:user_text) %>
       	<%= hidden_field_tag(:id, @random_card.id) %>
+      	<%= hidden_field_tag(:answer_time, 5) %>
       	<%= submit_tag("#{t('common.check_button')}") %>
       <% end %>
       <br />
