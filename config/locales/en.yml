@@ -33,7 +33,7 @@ en:
   correct: 'Correct!'
   correct_word: 'Correct translation is '
   users_word: 'Your translation: '
-  alert: 'Wrong!'
+  wrong: 'Wrong!'
 
   common:
     errors: 'Errors:'
