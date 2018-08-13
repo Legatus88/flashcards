@@ -1,7 +1,22 @@
-<% javascript_include_tag "answer_timer" %>
-
 <p><%= t('.main_title') %></p>
 
-<div>
-	<%= render 'card_check_form' %>
+<div class="card-check">
+	<% javascript_include_tag "answer_timer" %> 
+	
+	<% unless @random_card %>
+  		<p><%= t('.no_cards') %></p>
+	<% else %>
+	  	<p><%= t('.translate') %></p>
+	  	<p><b><%= @random_card.translated_text %></b></p>
+
+	    <%= form_tag("/check", method: "post", remote: true) do %>
+	      <%= label_tag(:user_text, "#{t('.translation')}") %>
+	  	  <%= text_field_tag(:user_text) %>
+	  	  <%= hidden_field_tag(:id, @random_card.id) %>
+	  	  <%= hidden_field_tag(:answer_time, 2) %>
+	  	  <%= submit_tag("#{t('common.check_button')}") %>
+		<% end %>
+		<br />
+		<%= image_tag(@random_card.image.url(:thumb)) if @random_card.image.exists? %><br />
+	<% end %>
 </div>

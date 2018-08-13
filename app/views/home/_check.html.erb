@@ -1,0 +1,26 @@
+<% javascript_include_tag "answer_timer" %>
+
+<div>
+    <p id="notice"><%= flash[:notice] %></p>
+    <p id="alert"><%= flash[:alert] %></p>
+    <p id="correct_word"><%= flash[:correct_word] %></p>
+    <p id="users_word"><%= flash[:users_word] %></p>
+</div> 
+
+<% unless @random_card %>
+  <p><%= t('home.index.no_cards') %></p>
+<% else %>
+  <p><%= t('home.index.translate') %></p>
+  <p><b><%= @random_card.translated_text %></b></p>
+
+  <%= form_tag("/check", method: "post", remote: true) do %>
+    <%= label_tag(:user_text, "#{t('home.index.translation')}") %>
+  	<%= text_field_tag(:user_text) %>
+  	<%= hidden_field_tag(:id, @random_card.id) %>
+  	<%= hidden_field_tag(:answer_time, 2) %>
+  	<%= submit_tag("#{t('common.check_button')}") %>
+  <% end %>
+  <br />
+  <%= image_tag(@random_card.image.url(:thumb)) if @random_card.image.exists? %><br />
+
+<% end %>
