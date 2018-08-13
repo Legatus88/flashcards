@@ -54,6 +54,10 @@
     
 
     <main role="main" class="container">
+      <div>
+          <p id="notice"><%= flash[:notice] %></p>
+          <p id="alert"><%= flash[:alert] %></p>
+      </div> 
       <div class="starter-template">
         <%= yield %>
       </div>

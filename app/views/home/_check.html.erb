@@ -12,7 +12,7 @@
   <p><%= t('home.index.translate') %></p>
   <p><b><%= @random_card.translated_text %></b></p>
 
-  <%= form_tag("/check", method: "post", remote: true) do %>
+  <%= form_tag(check_path, method: "post", remote: true, class: 'card-form') do %>
     <%= label_tag(:user_text, "#{t('home.index.translation')}") %>
   	<%= text_field_tag(:user_text) %>
   	<%= hidden_field_tag(:id, @random_card.id) %>
