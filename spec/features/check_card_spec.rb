@@ -13,7 +13,7 @@ describe 'checking translation' do
     end
 
     it "will tell Correct!" do
-      expect(response.body).to include 'Правильно!'
+      expect(page).to have_content 'Правильно!'
     end
   end
 
