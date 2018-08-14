@@ -1,12 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @current_deck = current_user.current_deck
-
-    @random_card = if @current_deck.nil?
-      current_user.cards.expired.sample
-    else
-      current_user.cards.deck(@current_deck).sample
-    end
+    card_and_deck
   end
 
   def check
@@ -14,16 +8,29 @@ class HomeController < ApplicationController
     @result = SuperMemo.new(@card).translation_correct?(params[:user_text], params[:answer_time])
 
     if @result
-      flash[:notice] = t(:correct)
-      flash[:correct_word] = "#{t(:correct_word)}\"#{@card.translated_text}\""
-      flash[:users_word] = "#{t(:users_word)}\"#{params[:user_text]}\""
+      flash[:result] = t(:correct)      
     else
-      flash[:alert] = t(:alert)
-      flash[:correct_word] = "#{t(:correct_word)}\"#{@card.translated_text}\""
-      flash[:users_word] = "#{t(:users_word)}\"#{params[:user_text]}\""
+      flash[:result] = t(:wrong)
     end
 
-    redirect_to root_path
+    flash[:correct_word] = "#{t(:correct_word)}\"#{@card.original_text}\""
+    flash[:users_word] = "#{t(:users_word)}\"#{params[:user_text]}\""
+    
+    respond_to do |format|
+      format.html { render partial: 'check' }
+      format.js
+      card_and_deck
+    end
+  end
+
+  private
+
+  def card_and_deck
+    @current_deck = current_user.current_deck
+    @random_card = if @current_deck.nil?
+                     current_user.cards.expired.sample
+                   else
+                     current_user.cards.deck(@current_deck).sample
+                   end
   end
 end
-

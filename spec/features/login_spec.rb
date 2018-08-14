@@ -12,7 +12,7 @@ describe 'checking translation' do
     before { visit root_path }
 
     it 'get login form' do
-      expect(page).to have_content 'Сперва залогиньтесь'
+      expect(page).to have_content 'Авторизуйтесь'
     end
   end
 

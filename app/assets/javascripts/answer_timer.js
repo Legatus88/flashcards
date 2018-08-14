@@ -6,7 +6,7 @@ function tik() {
 			$('#answer_time').val(i++);
 		}
 	});
-}
+};
 
 $(document).ready(function(){  
     tik();  

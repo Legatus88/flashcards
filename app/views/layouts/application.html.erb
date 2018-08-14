@@ -5,8 +5,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
@@ -55,12 +55,9 @@
 
     <main role="main" class="container">
       <div>
-        <p id="notice"><%= flash[:notice] %></p>
-        <p id="alert"><%= flash[:alert] %></p>
-        <p id="correct_word"><%= flash[:correct_word] %></p>
-        <p id="users_word"><%= flash[:users_word] %></p>
-      </div>    
-
+          <p id="notice"><%= flash[:notice] %></p>
+          <p id="alert"><%= flash[:alert] %></p>
+      </div> 
       <div class="starter-template">
         <%= yield %>
       </div>

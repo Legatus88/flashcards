@@ -8,7 +8,9 @@ describe 'checking translation' do
   end
 
   context 'when translation is true' do
-    before { check_it('House') }
+    before do 
+      check_it('House') 
+    end
 
     it "will tell Correct!" do
       expect(page).to have_content 'Правильно!'
