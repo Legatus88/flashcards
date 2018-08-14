@@ -17,7 +17,7 @@ class HomeController < ApplicationController
     flash[:users_word] = "#{t(:users_word)}\"#{params[:user_text]}\""
     
     respond_to do |format|
-      format.html { render :partial => 'check' }
+      format.html { render partial: 'check' }
       format.js
       card_and_deck
     end
