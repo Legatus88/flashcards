@@ -19,7 +19,7 @@ class Dashboard::DecksController < ApplicationController
     @decks = current_user.decks.create(deck_params)
 
     if @decks.save
-      redirect_to decks_path
+      redirect_to dashboard_decks_path
     else
       render 'new'
     end

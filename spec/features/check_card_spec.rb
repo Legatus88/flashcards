@@ -26,7 +26,7 @@ describe 'checking translation' do
   end
 
   context 'when user created a card' do
-    before { visit cards_path }
+    before { visit dashboard_cards_path }
 
     it 'will show user\'s card' do
       expect(page).to have_content 'House'

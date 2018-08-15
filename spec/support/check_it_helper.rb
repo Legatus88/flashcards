@@ -29,7 +29,7 @@ def twitter_login
 end
 
 def create_deck(title)
-  visit new_deck_path
+  visit new_dashboard_deck_path
   fill_in :deck_title, with: title
   click_button 'Создать колоду'
 end
