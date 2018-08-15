@@ -1,4 +1,4 @@
-class CardsController < ApplicationController
+class Dashboard::CardsController < ApplicationController
   def index
   	@cards = current_user.cards
   end
@@ -21,7 +21,7 @@ class CardsController < ApplicationController
     @cards = current_user.cards.create(card_params)
 
     if @cards.save
-      redirect_to cards_path
+      redirect_to dashboard_cards_path
     else
       render 'new'
     end
@@ -31,7 +31,7 @@ class CardsController < ApplicationController
     @cards = Card.find(params[:id])
  
     if @cards.update(card_params)
-      redirect_to cards_path
+      redirect_to dashboard_cards_path
     else
       render 'edit'
     end
@@ -41,7 +41,7 @@ class CardsController < ApplicationController
     @cards = Card.find(params[:id])
     @cards.destroy
  
-    redirect_to cards_path
+    redirect_to dashboard_cards_path
   end
 
   private

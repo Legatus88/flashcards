@@ -1,4 +1,4 @@
-<%= simple_form_for @cards do |f| %>
+<%= simple_form_for [:dashboard, @cards] do |f| %>
     
 <% if @cards.errors.any? %>
   <div class="alert alert-danger">
@@ -16,6 +16,6 @@
 <%= f.input :review_date %>
 <%= f.input :image, as: :file %>
 <%= f.input :deck_id, collection: @collection %>
-<%= f.button :submit, t('.submit', action: @cards.new_record? ? "#{t('common.create')}" : "#{t('common.change')}") %><br />
+<%= f.button :submit, t('cards.form.submit', action: @cards.new_record? ? "#{t('common.create')}" : "#{t('common.change')}") %><br />
 
 <% end %>

@@ -8,7 +8,7 @@ describe 'changing current deck' do
   end
   
   context 'when current deck doesn\'t selected' do
-    before { visit decks_path }
+    before { visit dashboard_decks_path }
 
     it 'will show no deck' do
       expect(page).to have_content 'Колода не выбрана'

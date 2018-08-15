@@ -1,0 +1,25 @@
+<p><%= link_to t('decks.index.create_new_deck'), new_dashboard_deck_path %> |
+<%= link_to t('decks.index.switch_current_deck'), '/switch_current_deck' %></p>
+
+<h4><%= t('decks.index.current_deck') %></h4>
+<p><%= @current_deck %></p>
+
+<h4><%= t('decks.index.all_decks') %>:</h4>
+<table>
+  <tr>
+    <th>ID</th>
+    <th><%= t('decks.index.deck_title') %></th>
+    <th colspan="2"></th>
+  </tr>
+ 
+  <% @decks.each do |deck| %>
+    <tr>
+      <td><%= deck.id %></td>
+      <td><%= deck.title %></td>
+      <td><%= link_to t('common.edit'), edit_dashboard_deck_path(deck) %></td>
+      <td><%= link_to t('common.delete'), dashboard_deck_path(deck),
+              method: :delete,
+              data: { confirm: t('common.confirmation') } %></td>
+    </tr>
+  <% end %>
+</table>

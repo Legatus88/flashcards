@@ -1,4 +1,4 @@
-<%= simple_form_for @decks do |f| %>
+<%= simple_form_for [:dashboard, @decks] do |f| %>
     
 <% if @decks.errors.any? %>
   <div class="alert alert-danger">
@@ -12,6 +12,6 @@
 <% end %>
 
 <%= f.input :title %>
-<%= f.button :submit, t('.submit', action: @decks.new_record? ? "#{t('common.create')}" : "#{t('common.change')}") %><br />
+<%= f.button :submit, t('decks.form.submit', action: @decks.new_record? ? "#{t('common.create')}" : "#{t('common.change')}") %><br />
 
 <% end %>

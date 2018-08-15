@@ -17,9 +17,9 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <%= link_to t('.all_cards'), cards_path %> |
-            <%= link_to t('.add_card'), new_card_path %> |
-            <%= link_to t('.decks'), decks_path %> |
+            <%= link_to t('.all_cards'), dashboard_cards_path %> |
+            <%= link_to t('.add_card'), new_dashboard_card_path %> |
+            <%= link_to t('.decks'), dashboard_decks_path %> |
             <%= link_to t('.login_twitter'), auth_at_provider_path(provider: :twitter) %>
           </li>
         </ul>

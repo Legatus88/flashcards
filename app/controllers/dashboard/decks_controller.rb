@@ -1,4 +1,4 @@
-class DecksController < ApplicationController
+class Dashboard::DecksController < ApplicationController
   def index
     @decks = current_user.decks
     @current_deck = if current_user.current_deck.nil?
@@ -19,7 +19,7 @@ class DecksController < ApplicationController
     @decks = current_user.decks.create(deck_params)
 
     if @decks.save
-      redirect_to decks_path
+      redirect_to dashboard_decks_path
     else
       render 'new'
     end
