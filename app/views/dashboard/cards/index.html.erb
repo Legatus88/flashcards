@@ -1,0 +1,23 @@
+<table>
+  <tr>
+    <th><%= t('cards.index.original') %></th>
+    <th><%= t('cards.index.translation') %></th>
+    <th><%= t('cards.index.review_date') %></th>
+    <th><%= t('cards.index.deck_id') %></th>
+    <th colspan="2"></th>
+  </tr>
+ 
+  <% @cards.each do |card| %>
+    <tr>
+      <td><%= card.original_text %></td>
+      <td><%= card.translated_text %></td>
+      <td><%= card.review_date %></td>
+      <td><%= card.deck_id %></td>
+      <td><%= link_to t('common.open'), dashboard_card_path(card) %> |</td>
+      <td><%= link_to t('common.edit'), edit_dashboard_card_path(card) %> |</td>
+      <td><%= link_to t('common.delete'), dashboard_card_path(card),
+              method: :delete,
+              data: { confirm: t('common.confirmation') } %></td>
+    </tr>
+  <% end %>
+</table>

@@ -1,4 +1,4 @@
-class DecksController < ApplicationController
+class Dashboard::DecksController < ApplicationController
   def index
     @decks = current_user.decks
     @current_deck = if current_user.current_deck.nil?
