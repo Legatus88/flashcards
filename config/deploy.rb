@@ -3,7 +3,7 @@ set :application, 'flashcards'
 # Путь к git репозиторию
 set :repo_url, 'git@github.com:Legatus88/flashcards.git'
 # Ветка по-умолчанию
-set :branch, 'master'
+set :branch, '20th-task'
 # Директория для деплоя
 set :deploy_to, '/home/deploy/applications/flashcards'
 
