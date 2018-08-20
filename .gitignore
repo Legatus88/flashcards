@@ -34,3 +34,8 @@
 
 # Ignore uploaded pictures
 /public/system
+
+# Ignore SSH keys
+/config/provision/keys
+
+/config/master.key
