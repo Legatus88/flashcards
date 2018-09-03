@@ -39,3 +39,5 @@
 /config/provision/keys
 
 /config/master.key
+
+/shared
