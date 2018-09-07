@@ -1,0 +1,84 @@
+---
+- hosts: 'all'
+  remote_user: 'root'
+  gather_facts: no
+  pre_tasks:
+  - name: 'install python2'
+    raw: sudo apt-get -y install python-simplejson
+
+  vars:
+    ruby_version: '2.5.1'
+    user: 'ubuntu'
+    home: '/home/{{ user }}'
+    rbenv_root: '{{ home }}/.rbenv'
+    app_name: 'flashcards'
+    application: '{{ home }}/apps/{{ app_name }}'
+
+  tasks:
+    ### Install packages ###
+    - name: 'apt | update'
+      action: 'apt update_cache=yes'
+
+    - name: 'apt | install dependencies'
+      action: 'apt pkg={{ item }}'
+      with_items:
+        - 'build-essential'
+        - 'libssl-dev'
+        - 'libyaml-dev'
+        - 'libreadline6-dev'
+        - 'zlib1g-dev'
+        - 'libcurl4-openssl-dev'
+        - 'git'
+        - 'nginx'
+        - 'redis-server'
+        - 'postgresql'
+        - 'postgresql-contrib'
+        - 'libpq-dev'
+        - 'imagemagick'
+        - 'libmagickwand-dev'
+        - 'nodejs'
+        - 'htop'
+
+    ### Manage database ###
+    - name: 'postgresql | check user'
+      shell: 'psql -U postgres -c "\copyright"'
+      register: 'postgres_login'
+      ignore_errors: yes
+
+    - name: 'postgresql | set auth type'
+      copy: 'src=configs/pg_hba.conf dest=/etc/postgresql/9.5/main/pg_hba.conf owner=postgres group=postgres mode=0644'
+      when: 'postgres_login is failed'
+
+    - name: 'postgresql | restart service'
+      service: name=postgresql state=restarted
+      when: 'postgres_login is failed'
+
+    - name: 'postgresql | create shared directory'
+      shell: 'mkdir -p {{ application }}/shared/config -m 775 && chown -R {{ user }}:{{ user }} {{ home }}/apps'
+      when: 'postgres_login is failed'
+
+    - name: 'postgresql | copy database.yml'
+      template: 'src=configs/database.yml dest={{ application }}/shared/config/database.yml owner={{ user }} group={{ user }} mode=0644'
+      when: 'postgres_login is failed'
+
+    - name: 'postgresql | create database'
+      shell: 'createdb -U postgres -O postgres -E UTF8 -l en_US.UTF-8 {{ app_name }}_production'
+      when: 'postgres_login is failed'
+
+    ### Setup nginx ###
+    - name: 'nginx | check config'
+      command: 'test -f /etc/nginx/sites-enabled/{{ app_name }}.conf'
+      register: 'nginx_config_copied'
+      ignore_errors: yes
+
+    - name: 'nginx | createdir'
+      shell: 'rm /etc/nginx/sites-enabled/default; mkdir -p etc/nginx/sites-enabled/'
+      when: 'nginx_config_copied is failed'
+
+    - name: 'nginx | copy config'
+      template: 'src=configs/nginx.conf dest=/etc/nginx/sites-enabled/{{ app_name }}.conf owner=root group=root mode=0644'
+      when: 'nginx_config_copied is failed'
+
+    - name: 'nginx | restart service'
+      service: name=nginx state=restarted
+      when: 'nginx_config_copied is failed'
