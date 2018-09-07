@@ -12,7 +12,7 @@
     home: '/home/{{ user }}'
     rbenv_root: '{{ home }}/.rbenv'
     app_name: 'flashcards'
-    application: '{{ home }}/applications/{{ app_name }}'
+    application: '{{ home }}/apps/{{ app_name }}'
 
   tasks:
     ### Install packages ###
@@ -39,13 +39,6 @@
         - 'nodejs'
         - 'htop'
 
-    ### Create an account with ssh keys ###
-    - name: 'account | copy ssh private key'
-      copy: 'src=keys/id_rsa dest={{ home }}/.ssh/id_rsa owner={{ user }} group={{ user }} mode=0600'
-
-    - name: 'account | copy ssh public key'
-      copy: 'src=keys/id_rsa.pub dest={{ home }}/.ssh/id_rsa.pub owner={{ user }} group={{ user }} mode=0644'
-
     ### Manage database ###
     - name: 'postgresql | check user'
       shell: 'psql -U postgres -c "\copyright"'
@@ -61,7 +54,7 @@
       when: 'postgres_login is failed'
 
     - name: 'postgresql | create shared directory'
-      shell: 'mkdir -p {{ application }}/shared/config -m 775 && chown -R {{ user }}:{{ user }} {{ home }}/applications'
+      shell: 'mkdir -p {{ application }}/shared/config -m 775 && chown -R {{ user }}:{{ user }} {{ home }}/apps'
       when: 'postgres_login is failed'
 
     - name: 'postgresql | copy database.yml'
