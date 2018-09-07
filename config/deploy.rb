@@ -1,5 +1,5 @@
 # Change these
-server '18.223.122.68', port: 80, roles: [:web, :app, :db], primary: true
+server '18.223.122.68', roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:Legatus88/flashcards.git'
 set :application,     'flashcards'
